@@ -6,8 +6,7 @@ ScriptS transpile from awesome ScriptS soruce code to Python code.
 Python code will run on background.
 [Sila](https://github.com/KajizukaTaichi/sila) is used as transpiler infrastructure.
 
-In meaning, S stands for Speed, Secure, Static, Simple and Small.
-That doesn't include Soviet, Stalin and Socialism. lol
+In meaning, S stands for Speed, Secure, Simple and Small.
 
 ## [Example code](/example.ss)
 ```
