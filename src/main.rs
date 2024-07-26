@@ -157,10 +157,22 @@ fn parse_expr(source: String) -> Expr {
             expr.push(Expr::Operator(Operator::Mod))
         } else if token == "==" {
             expr.push(Expr::Operator(Operator::Equal))
+        } else if token == "!=" {
+            expr.push(Expr::Operator(Operator::NotEq))
         } else if token == ">" {
             expr.push(Expr::Operator(Operator::Greater))
         } else if token == "<" {
             expr.push(Expr::Operator(Operator::Less))
+        } else if token == ">=" {
+            expr.push(Expr::Operator(Operator::GreaterEq))
+        } else if token == "<=" {
+            expr.push(Expr::Operator(Operator::LessEq))
+        } else if token == "&& " {
+            expr.push(Expr::Operator(Operator::And))
+        } else if token == "||" {
+            expr.push(Expr::Operator(Operator::Or))
+        } else if token == "!" {
+            expr.push(Expr::Operator(Operator::Not))
         } else {
             expr.push(Expr::Literal(Type::Symbol(token)))
         }
