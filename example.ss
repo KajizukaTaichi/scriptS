@@ -5,7 +5,7 @@ while i < 9 {
     var line <- "";
 
     var j <- 0;
-    while j <9 {
+    while j < 9 {
         var j <- j + 1;
         var line <- line + str(i * j).rjust(3);
     };
