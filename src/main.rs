@@ -5,18 +5,28 @@ use sila_transpiler_infrastructure::*;
 
 fn main() {
     let args = env::args().collect::<Vec<_>>();
-    if args.len() > 1 {
-        let code = transpile_python(parse_program(
-            read_to_string(File::open(args[1].clone()).expect("チノちゃん「うるさいですね...」"))
+    if args.len() > 2 {
+        let ast = parse_program(
+            read_to_string(File::open(args[2].clone()).expect("チノちゃん「うるさいですね...」"))
                 .unwrap(),
-        ));
-        pyo3::prepare_freethreaded_python();
-        Python::with_gil(|py| {
-            py.run_bound(&code, None, None)
-                .expect("チノちゃん「うるさいですね...」");
-        });
+        );
+        if args[1] == "run" {
+            pyo3::prepare_freethreaded_python();
+            Python::with_gil(|py| {
+                py.run_bound(&transpile_python(ast), None, None)
+                    .expect("チノちゃん「うるさいですね...」");
+            });
+        } else if args[1] == "ast" {
+            dbg!(ast);
+        } else if args[1] == "code" {
+            println!("{}", &transpile_python(ast));
+        } else {
+            eprintln!("Error: unknown sub-command: '{}'", args[1]);
+        }
     } else {
-        eprintln!("Error: command-line parameter is too shortage")
+        println!("Script S");
+        println!("(c) 2024 梶塚太智. All rights reserved");
+        println!("GitHub repository: https://github.com/KajizukaTaichi/scriptS");
     }
 }
 
