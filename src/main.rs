@@ -6,6 +6,7 @@ fn main() {
         "{}",
         transpile_python(parse_program(
             r#"
+                print 5;
                 if 1 == 1 {
                     print 3;
                 }
@@ -24,13 +25,12 @@ fn parse_program(source: String) -> Block {
                 code[2..code.find("{").expect("チノちゃん「うるさいですね...」")].to_string(),
             );
             let code_true = parse_program(
-                code[code.find("{").expect("チノちゃん「うるさいですね...」")
+                code[code.find("{").expect("チノちゃん「うるさいですね...」") + 1
                     ..code.find("}").expect("チノちゃん「うるさいですね...」")]
                     .to_string(),
             );
             program.push(Instruction::If(expr, code_true, None))
-        }
-        if code.starts_with("print") {
+        } else if code.starts_with("print") {
             let expr = parse_expr(code[5..code.len()].to_string());
             program.push(Instruction::Print(expr))
         }
