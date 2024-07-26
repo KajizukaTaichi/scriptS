@@ -2,7 +2,7 @@
 this programming language is design for alternative of Python.
 Because Python function is very rich, but that grammar is too bad.
 
-ScriptS transpile Python code from readable ScriptS soruce code.
+ScriptS transpile from awesome ScriptS soruce code to Python code.
 [Sila](https://github.com/KajizukaTaichi/sila) is used as transpiler infrastructure.
 
 In meaning, S stands for Speed, Secure, Static, Simple and Small.
