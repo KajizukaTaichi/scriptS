@@ -1,3 +1,4 @@
+// This program to solve FizzBuzz;
 var i <- 0;
 var result <- "";
 while i < 100 {
