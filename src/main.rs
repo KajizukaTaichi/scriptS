@@ -67,6 +67,8 @@ fn parse_program(source: String) -> Block {
                     .to_string(),
             );
             program.push(Instruction::While(expr, code_loop))
+        } else if code.starts_with("//") {
+            program.push(Instruction::Comment(code[5..code.len()].to_string()))
         }
     }
     program
