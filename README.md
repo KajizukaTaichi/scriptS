@@ -1,11 +1,11 @@
 # ScriptS
-this programming language is design for alternative of Python.<br>
+this programming language is design for alternative of Python.
 Because Python function is very rich, but that grammar is too bad.
 
-ScriptS transpile Python code from readable ScriptS soruce code.<br>
+ScriptS transpile Python code from readable ScriptS soruce code.
 [Sila](https://github.com/KajizukaTaichi/sila) is used as transpiler infrastructure.
 
-In meaning, S stands for Speed, Secure, Static, Simple and Small.<br>
+In meaning, S stands for Speed, Secure, Static, Simple and Small.
 That doesn't include Soviet, Stalin and Socialism. lol
 
 ## [Example code](/example.ss)
@@ -26,9 +26,10 @@ while i < 10 {
 ```
 
 ## Usage
+Rust is needed to use ScriptS. You have to install it.
 Let's try below command to transpile Python code.
-Rust is needed to use ScriptS.
 ```
 cargo run -- example.ss example.py
 ```
-Then, It may created file `example.py`
+Then, It may created file `example.py`.
+After that, just run it as Python.
