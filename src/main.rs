@@ -6,9 +6,9 @@ fn main() {
         "{}",
         transpile_python(parse_program(
             r#"
-                print 5;
+                var x <- 5;
                 if 1 == 1 {
-                    print 3;
+                    print x;
                 }
         "#
             .to_string()
@@ -33,6 +33,26 @@ fn parse_program(source: String) -> Block {
         } else if code.starts_with("print") {
             let expr = parse_expr(code[5..code.len()].to_string());
             program.push(Instruction::Print(expr))
+        } else if code.starts_with("var") {
+            let name = code[3..code.find("<-").expect("チノちゃん「うるさいですね...」")]
+                .trim()
+                .to_string();
+            let expr = parse_expr(
+                code[code.find("<-").expect("チノちゃん「うるさいですね...」") + 2..code.len()]
+                    .to_string(),
+            );
+            program.push(Instruction::Variable(name, expr))
+        }
+        if code.starts_with("while") {
+            let expr = parse_expr(
+                code[2..code.find("{").expect("チノちゃん「うるさいですね...」")].to_string(),
+            );
+            let code_loop = parse_program(
+                code[code.find("{").expect("チノちゃん「うるさいですね...」") + 1
+                    ..code.find("}").expect("チノちゃん「うるさいですね...」")]
+                    .to_string(),
+            );
+            program.push(Instruction::While(expr, code_loop))
         }
     }
     program
