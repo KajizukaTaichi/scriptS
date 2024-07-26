@@ -30,5 +30,5 @@ while i < 9 {
 Rust is needed to use ScriptS. You have to install it.
 Let's try below command to run script.
 ```
-cargo run -- example.ss example.py
+cargo run -- example.ss
 ```
