@@ -1,13 +1,33 @@
-# Script S
+# ScriptS
 this programming language is design for alternative of Python.
-Because Python library is very rich, but that grammar is too bad.
+Because Python function is very rich, but that grammar is too bad.
 
-S stands for Speed, Secure, Static, Simple and Small.
+ScriptS transpile Python code.
+[Sila](https://github.com/KajizukaTaichi/sila) is used as transpiler infrastructure.
+
+In meaning, S stands for Speed, Secure, Static, Simple and Small.
 It doesn't include Soviet, Stalin and Socialism. lol
 
+# [Example code](/example.ss)
+```
+print "Multiplication table";
+var i <- 0;
+while i < 10 {
+    var i <- i + 1;
+    var line <- "";
+
+    var j <- 0;
+    while j < 10 {
+        var j <- j + 1;
+        var line <- line + " " + str(i * j).rjust(3);
+    };
+    print line;
+};
+```
+
 # Usage
-Let's try below command.
-Rust is needed to run ScriptS
+Let's try below command to transpile Python code.
+Rust is needed to use ScriptS.
 ```
 cargo run -- example.ss example.py
 ```
