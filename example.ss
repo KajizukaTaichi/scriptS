@@ -1,8 +1,13 @@
-var x <- 0;
-while x < 10 {
-    print x;
-    if x == 7 {
-        print "Lukky seven!";
+print "Multiplication table";
+var i <- 0;
+while i < 10 {
+    var i <- i + 1;
+    var line <- "";
+
+    var j <- 0;
+    while j < 10 {
+        var j <- j + 1;
+        var line <- line + " " + str(i * j).rjust(3);
     };
-    var x <- x + 1;
+    print line;
 };
