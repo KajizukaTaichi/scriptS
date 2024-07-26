@@ -8,7 +8,7 @@ ScriptS transpile Python code.
 In meaning, S stands for Speed, Secure, Static, Simple and Small.
 It doesn't include Soviet, Stalin and Socialism. lol
 
-# [Example code](/example.ss)
+## [Example code](/example.ss)
 ```
 print "Multiplication table";
 var i <- 0;
@@ -25,9 +25,10 @@ while i < 10 {
 };
 ```
 
-# Usage
+## Usage
 Let's try below command to transpile Python code.
 Rust is needed to use ScriptS.
 ```
 cargo run -- example.ss example.py
 ```
+Then, It may created file `example.py`
