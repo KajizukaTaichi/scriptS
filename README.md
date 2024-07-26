@@ -1,12 +1,12 @@
 # ScriptS
-this programming language is design for alternative of Python.
+this programming language is design for alternative of Python.<br>
 Because Python function is very rich, but that grammar is too bad.
 
-ScriptS transpile Python code.
+ScriptS transpile Python code from readable ScriptS soruce code.<br>
 [Sila](https://github.com/KajizukaTaichi/sila) is used as transpiler infrastructure.
 
-In meaning, S stands for Speed, Secure, Static, Simple and Small.
-It doesn't include Soviet, Stalin and Socialism. lol
+In meaning, S stands for Speed, Secure, Static, Simple and Small.<br>
+That doesn't include Soviet, Stalin and Socialism. lol
 
 ## [Example code](/example.ss)
 ```
