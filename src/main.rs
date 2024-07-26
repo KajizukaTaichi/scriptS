@@ -1,7 +1,6 @@
-use pyo3::prelude::*;
+use pyo3::{prelude::Python, prepare_freethreaded_python};
+use sila_transpiler_infrastructure::{transpile_python, Block, Expr, Instruction, Operator, Type};
 use std::{env, fs::File, io::read_to_string};
-
-use sila_transpiler_infrastructure::*;
 
 fn main() {
     let args = env::args().collect::<Vec<_>>();
@@ -11,7 +10,7 @@ fn main() {
                 .unwrap(),
         );
         if args[1] == "run" {
-            pyo3::prepare_freethreaded_python();
+            prepare_freethreaded_python();
             Python::with_gil(|py| {
                 py.run_bound(&transpile_python(ast), None, None)
                     .expect("チノちゃん「うるさいですね...」");
