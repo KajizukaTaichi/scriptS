@@ -1,20 +1,23 @@
-use std::{
-    env,
-    fs::File,
-    io::{read_to_string, Write},
-};
+use pyo3::prelude::*;
+use std::{env, fs::File, io::read_to_string};
 
 use sila_transpiler_infrastructure::*;
 
 fn main() {
-    println!("Thanks for using ScriptS !!");
-    let code = transpile_python(parse_program(
-        read_to_string(File::open(env::args().collect::<Vec<_>>()[1].clone()).unwrap()).unwrap(),
-    ));
-    File::create(env::args().collect::<Vec<_>>()[2].clone())
-        .unwrap()
-        .write_all(code.as_bytes())
-        .unwrap();
+    let args = env::args().collect::<Vec<_>>();
+    if args.len() > 1 {
+        let code = transpile_python(parse_program(
+            read_to_string(File::open(args[1].clone()).expect("チノちゃん「うるさいですね...」"))
+                .unwrap(),
+        ));
+        pyo3::prepare_freethreaded_python();
+        Python::with_gil(|py| {
+            py.run_bound(&code, None, None)
+                .expect("チノちゃん「うるさいですね...」");
+        });
+    } else {
+        eprintln!("Error: command-line parameter is too shortage")
+    }
 }
 
 fn parse_program(source: String) -> Block {
@@ -105,10 +108,10 @@ fn tokenize_program(input: String) -> Vec<String> {
     }
 
     if in_parentheses != 0 {
-        panic!("Syntax error: There isn't end of parentheses");
+        panic!("チノちゃん「うるさいですね...」");
     }
     if in_quote {
-        panic!("Syntax error: There isn't end of quote");
+        panic!("チノちゃん「うるさいですね...」");
     }
 
     if !current_token.is_empty() {
@@ -220,10 +223,10 @@ fn tokenize_expr(input: String) -> Vec<String> {
     }
 
     if in_parentheses != 0 {
-        panic!("Syntax error: There isn't end of parentheses");
+        panic!("チノちゃん「うるさいですね...」");
     }
     if in_quote {
-        panic!("Syntax error: There isn't end of quote");
+        panic!("チノちゃん「うるさいですね...」");
     }
 
     if !current_token.is_empty() {
