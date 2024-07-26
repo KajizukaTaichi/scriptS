@@ -1,19 +1,20 @@
+use std::{
+    env,
+    fs::File,
+    io::{read_to_string, Write},
+};
+
 use sila_transpiler_infrastructure::*;
 
 fn main() {
-    println!("Hello, world of the ScriptS !!");
-    println!(
-        "{}",
-        transpile_python(parse_program(
-            r#"
-                var x <- 5;
-                if 1 == 1 {
-                    print x;
-                }
-        "#
-            .to_string()
-        ))
-    );
+    println!("Thanks for using ScriptS !!");
+    let code = transpile_python(parse_program(
+        read_to_string(File::open(env::args().collect::<Vec<_>>()[1].clone()).unwrap()).unwrap(),
+    ));
+    File::create(env::args().collect::<Vec<_>>()[2].clone())
+        .unwrap()
+        .write_all(code.as_bytes())
+        .unwrap();
 }
 
 fn parse_program(source: String) -> Block {
@@ -26,7 +27,7 @@ fn parse_program(source: String) -> Block {
             );
             let code_true = parse_program(
                 code[code.find("{").expect("チノちゃん「うるさいですね...」") + 1
-                    ..code.find("}").expect("チノちゃん「うるさいですね...」")]
+                    ..code.rfind("}").expect("チノちゃん「うるさいですね...」")]
                     .to_string(),
             );
             program.push(Instruction::If(expr, code_true, None))
@@ -45,11 +46,11 @@ fn parse_program(source: String) -> Block {
         }
         if code.starts_with("while") {
             let expr = parse_expr(
-                code[2..code.find("{").expect("チノちゃん「うるさいですね...」")].to_string(),
+                code[5..code.find("{").expect("チノちゃん「うるさいですね...」")].to_string(),
             );
             let code_loop = parse_program(
                 code[code.find("{").expect("チノちゃん「うるさいですね...」") + 1
-                    ..code.find("}").expect("チノちゃん「うるさいですね...」")]
+                    ..code.rfind("}").expect("チノちゃん「うるさいですね...」")]
                     .to_string(),
             );
             program.push(Instruction::While(expr, code_loop))
@@ -92,7 +93,7 @@ fn tokenize_program(input: String) -> Vec<String> {
                     current_token.push(c);
                 } else {
                     if !current_token.is_empty() {
-                        tokens.push(current_token.clone());
+                        tokens.push(current_token.trim().to_string());
                         current_token.clear();
                     }
                 }
@@ -103,8 +104,15 @@ fn tokenize_program(input: String) -> Vec<String> {
         }
     }
 
+    if in_parentheses != 0 {
+        panic!("Syntax error: There isn't end of parentheses");
+    }
+    if in_quote {
+        panic!("Syntax error: There isn't end of quote");
+    }
+
     if !current_token.is_empty() {
-        tokens.push(current_token);
+        tokens.push(current_token.to_string());
     }
 
     tokens
