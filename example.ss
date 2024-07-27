@@ -9,13 +9,13 @@ fn fizzbuzz(i) {
     if i % 3 == 0 {
         return "Fizz";
     };
-    return str(i0;
+    return str(i);
 };
 
 var i <- 0;
 var result <- "";
 while i < 100 {
     var i <- i + 1;
-    var result <- result + " " + fizzbuzz(i)
+    var result <- result + " " + fizzbuzz(i);
 };
 print result;
