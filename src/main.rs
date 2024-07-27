@@ -71,6 +71,10 @@ fn parse_program(source: String) -> Block {
             program.push(Instruction::Comment(code[2..code.len()].trim().to_string()))
         } else if code.starts_with("import") {
             program.push(Instruction::Import(code[6..code.len()].trim().to_string()))
+        } else if code == "next" {
+            program.push(Instruction::Continue)
+        } else if code == "break" {
+            program.push(Instruction::Break)
         }
     }
     program
