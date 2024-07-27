@@ -1,4 +1,5 @@
-// This function is to solve FizzBuzz;
+// This program is to solve FizzBuzz;
+
 fn fizzbuzz(i) {
     if i % 15 == 0 {
         return "FizzBuzz";
@@ -12,8 +13,14 @@ fn fizzbuzz(i) {
     return str(i);
 };
 
+fn add_text(source, text) {
+    return source + text + " "
+};
+
 var i <- 0;
+var result <- "";
 while i < 100 {
     var i <- i + 1;
-    print fizzbuzz(i);
+    var result <- add_text(result, fizzbuzz(i));
 };
+print result;
