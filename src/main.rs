@@ -80,7 +80,7 @@ fn parse_program(source: String) -> Block {
             let name =
                 code[2..code.find("(").expect("チノちゃん「うるさいですね...」")].to_string();
             let args: Vec<String> = code[code.find("(").expect("チノちゃん「うるさいですね...」")
-                - 1
+                + 1
                 ..code.find(")").expect("チノちゃん「うるさいですね...」")]
                 .to_string()
                 .split(",")
