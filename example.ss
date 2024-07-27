@@ -13,9 +13,7 @@ fn fizzbuzz(i) {
 };
 
 var i <- 0;
-var result <- "";
 while i < 100 {
     var i <- i + 1;
-    var result <- result + " " + fizzbuzz(i);
+    print fizzbuzz(i);
 };
-print result;
