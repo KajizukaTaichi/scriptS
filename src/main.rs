@@ -76,6 +76,29 @@ fn parse_program(source: String) -> Block {
         } else if code == "break" {
             program.push(Instruction::Break)
         }
+        if code.starts_with("fn") {
+            let name =
+                code[2..code.find("(").expect("チノちゃん「うるさいですね...」")].to_string();
+            let args: Vec<String> = code[code.find("(").expect("チノちゃん「うるさいですね...」")
+                ..code.find(")").expect("チノちゃん「うるさいですね...」")]
+                .to_string()
+                .split(",")
+                .into_iter()
+                .map(String::from)
+                .collect();
+            let code_inner = parse_program(
+                code[code.find("{").expect("チノちゃん「うるさいですね...」") + 1
+                    ..code.rfind("}").expect("チノちゃん「うるさいですね...」")]
+                    .to_string(),
+            );
+            program.push(Instruction::Function(name, args, code_inner))
+        } else if code.starts_with("return") {
+            program.push(Instruction::Return(Some(parse_expr(
+                code[6..code.len()].trim().to_string(),
+            ))));
+        } else if code == "back" {
+            program.push(Instruction::Return(None));
+        }
     }
     program
 }
