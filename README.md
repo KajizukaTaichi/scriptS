@@ -10,19 +10,26 @@ In meaning, S stands for Speed, Secure, Simple and Small.
 
 ## [Example code](/example.ss)
 ```
-print "Multiplication table";
+// This program to solve FizzBuzz;
 var i <- 0;
-while i < 9 {
+var result <- "";
+while i < 100 {
     var i <- i + 1;
-    var line <- "";
-
-    var j <- 0;
-    while j < 9 {
-        var j <- j + 1;
-        var line <- line + str(i * j).rjust(3);
+    if i % 15 == 0 {
+        var result <- result + "FizzBuzz ";
+    }; if !(i % 15 == 0) {
+        if i % 5 == 0 {
+            var result <- result + "Buzz ";
+        }; if !(i % 5 == 0) {
+            if i % 3 == 0 {
+                var result <- result + "Fizz ";
+            }; if !(i % 3 == 0) {
+                var result <- result + f"{i} ";
+            };
+        };
     };
-    print line;
 };
+print result;
 ```
 
 ## Usage
