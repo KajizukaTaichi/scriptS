@@ -25,6 +25,7 @@ fn main() {
     } else {
         println!("Script S");
         println!("(c) 2024 梶塚太智. All rights reserved");
+        println!("Official website: https://kajizukataichi.github.io/script-s.html");
         println!("GitHub repository: https://github.com/KajizukaTaichi/scriptS");
     }
 }
