@@ -242,7 +242,7 @@ fn tokenize_expr(input: String) -> Vec<String> {
                         current_token.clear();
                     }
                 } else {
-                    panic!("Syntax error: invalid end of parentheses")
+                    panic!("チノちゃん「うるさいですね...」");
                 }
             }
             '"' => {
