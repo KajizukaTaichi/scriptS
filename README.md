@@ -34,7 +34,18 @@ print result;
 
 ## Usage
 Rust is needed to use ScriptS. You have to install it.
-Let's try below command to run script.
+
+sub-command `code` is to run script.
 ```
-cargo run -- example.ss
+cargo run -- run example.ss
+```
+
+sub-command `code` is to show Python code generated.
+```
+cargo run -- code example.ss
+```
+
+sub-command `ast` is to show abstract syntax tree.
+```
+cargo run -- ast example.ss
 ```
