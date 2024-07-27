@@ -5,4 +5,4 @@ edition = "2021"
 
 [dependencies]
 pyo3 = "0.22.2"
-sila-transpiler-infrastructure = "0.3.3"
+sila-transpiler-infrastructure = "0.3.4"

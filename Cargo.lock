@@ -144,9 +144,9 @@ dependencies = [
 
 [[package]]
 name = "sila-transpiler-infrastructure"
-version = "0.3.3"
+version = "0.3.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c508f7a663cc0fb17b7a86263fcd60535a4ba4462d959243d0059452674b55f3"
+checksum = "5ca363c47ac41129a072ac46fda5846965435a205ac9e416ab129c913c4ad72b"
 
 [[package]]
 name = "syn"
